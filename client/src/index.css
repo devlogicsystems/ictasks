@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Corporate Colors - Light Theme */
+    --background: 36 45% 88%; /* #F1E3D3 */
+    --foreground: 0 0% 0%;    /* #000000 */
+
+    --card: 48 16% 75%;        /* #CCC7B9 */
+    --card-foreground: 0 0% 0%; /* #000000 */
+
+    --dashboardcard: 36 45% 92%; /* Lighter version of #F1E3D3 for glass effect */
+    --dashboardcard-foreground: 0 0% 0%; /* #000000 */
+
+    --popover: 48 16% 80%;     /* Slightly lighter than card, e.g., #DAD5C7 */
+    --popover-foreground: 0 0% 0%; /* #000000 */
+
+    --primary: 343 81% 22%;    /* #690B22 */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
+
+    --secondary: 13 67% 62%;   /* #E07A5F */
+    --secondary-foreground: 0 0% 100%; /* #FFFFFF */
+
+    --muted: 48 16% 85%;       /* Even lighter shade of card, e.g., #E0DBCF */
+    --muted-foreground: 343 81% 30%; /* Darker primary for muted text */
+
+    --accent: 158 46% 20%;     /* #1B4D3E */
+    --accent-foreground: 0 0% 100%; /* #FFFFFF */
+
+    --destructive: 0 84% 60%; /* Standard destructive red */
+    --destructive-foreground: 0 0% 100%; /* #FFFFFF */
+
+    --border: 158 46% 30%;     /* Accent, slightly lighter, or related to primary */
+    --input: 48 16% 80%;       /* Similar to muted or card */
+    --ring: 343 81% 22%;       /* Primary color for rings */
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Corporate Colors - Dark Theme (Interpretation) */
+    --background: 0 0% 7%; /* #121212 */
+    --foreground: 0 0% 98%;   /* Off-white */
+
+    --card: 240 6% 10%;       /* Dark grey */
+    --card-foreground: 0 0% 98%;
+
+    --dashboardcard: 240 6% 12%; /* Slightly lighter dark grey for glass effect */
+    --dashboardcard-foreground: 0 0% 98%;
+
+    --popover: 240 10% 4%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 343 70% 50%;   /* Brighter corporate primary for dark mode */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 13 60% 70%;  /* Brighter corporate secondary */
+    --secondary-foreground: 0 0% 0%; /* Black text on this secondary */
+
+    --muted: 240 5% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 158 40% 40%;    /* Brighter corporate accent */
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 4% 20%;
+    --input: 240 5% 15%;
+    --ring: 343 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .bg-dashboardcard {
+    background-color: hsl(var(--dashboardcard));
+  }
+  
+  .text-dashboardcard-foreground {
+    color: hsl(var(--dashboardcard-foreground));
+  }
+}
+
+@layer utilities {
+  .list-item {
+    @apply bg-card border-b border-border/30 transition-all duration-200 hover:bg-card/80;
+  }
+  
+  .list-item-expanded {
+    @apply bg-card/90; /* Or a slightly different shade like bg-muted */
+  }
+  
+  .dark .task-subject {
+    @apply text-[#E0E0E0];
+  }
+  
+  .status-assigned {
+    @apply bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-700;
+  }
+  
+  .status-in-progress {
+    @apply bg-orange-100 text-orange-800 border-orange-200 dark:bg-orange-900/30 dark:text-orange-300 dark:border-orange-700;
+  }
+  
+  .status-closed {
+    @apply bg-emerald-100 text-emerald-800 border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:border-emerald-700;
+  }
+
+  .gradient-header {
+    @apply bg-primary; /* Uses the CSS variable --primary */
+  }
+
+  .glass-effect {
+    @apply bg-dashboardcard backdrop-blur-sm border border-secondary/20; /* Uses --dashboardcard */
+  }
+}

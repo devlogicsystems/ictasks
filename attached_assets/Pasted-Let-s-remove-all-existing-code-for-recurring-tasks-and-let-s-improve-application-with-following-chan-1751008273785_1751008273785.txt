@@ -1,0 +1,20 @@
+Let's remove all existing code for recurring tasks and let's improve application with following changes and that should be done at once without breaking any other existing functionality.
+1. System should provide facility to add recurring tasks. User will add template for recurring tasks with following details similar to a task
+    a. Task subject
+    b. Brief Details
+    c. Assignee
+    d. Custom labels
+    e. Linked URL (optional)
+    f. Task Scheduler - Weekly / Monthly / Yearly
+           Weekly - User should be able to select multiple weekdays 
+           Monthly - User should be able to select multiple dates from 1 to 30. 
+           Yearly - User will select multiple dates of a month and multiple dates with different month
+           (User should be reminded if he is selecting date above than 28 , in February all tasks will be aligned to date 28 which are created for 29 and 30 )
+     g. Recurring Task Status - Active / Inactive
+     h. Recurring tasks can be deleted once the are in Inactive state. System will provision a flag to mark such deleted tasks and will not be shown on dashboard. 
+ 2. Task scheduler will create task as per frequency Weekly, Monthly, Yearly only before 5 days of task occurrence. 
+      For Example - For Weekly task is scheduled on each Friday, system will create task every Monday. It will not create all tasks at once. But every Monday system will create task for Friday as due date. 
+      For Example - For monthly task scheduled to run on every 22nd of month, system will create that task on every 17th of the month with due date as 22 for that month. System will not create all 12 month tasks but will create task every month.
+      For Example - For Yearly task, if the system is scheduled for yearly recurring task for March 15 and Jun 15, system will create task on March 10. System will wait till Jun 10 to create new task with due date of Jun 15. System will not create all yearly tasks.
+3.  System will create tasks only for future dates. For example, if today is Wednesday and user creates recurring task that should run every Monday, System will create that task with due date of next Monday. Task will be created tomorrow. Same logic should be implemented for monthly and yearly tasks schedules.
+ 
